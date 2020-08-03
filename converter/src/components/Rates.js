@@ -9,6 +9,11 @@ const Container = styled.section`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
   grid-gap: 20px;
+
+  @media (max-width: 940px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+  }
 `;
 
 const CurrencyAndValue = styled.div`

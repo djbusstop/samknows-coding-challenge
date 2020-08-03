@@ -9,6 +9,10 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 940px) {
+    width: auto;
+  }
 `;
 
 const SwitchButton = styled.button`
