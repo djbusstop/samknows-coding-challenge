@@ -39,7 +39,7 @@ export default () => {
 
       await setBase(body.base);
       await setRates(sortedRates);
-      await setCurrencies(Object.keys(body.rates));
+      await setCurrencies(Object.keys(sortedRates));
       await setLoadingState("success");
     } catch (e) {
       setLoadingState("error");

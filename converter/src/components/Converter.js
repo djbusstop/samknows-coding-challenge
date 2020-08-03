@@ -102,7 +102,6 @@ export default ({ loadingState, base, currencies, rates, getRates }) => {
         }}
         value={baseCurrency}
       >
-        <option value={base}>{base}</option>
         {currencies.map((currency) => {
           return (
             <option key={currency} value={currency}>
@@ -132,7 +131,6 @@ export default ({ loadingState, base, currencies, rates, getRates }) => {
         }}
         value={targetCurrency}
       >
-        <option value={base}>{base}</option>
         {currencies.map((currency) => {
           return (
             <option key={currency} value={currency}>

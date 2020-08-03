@@ -36,13 +36,6 @@ export default ({ loadingState, base, currencies, rates }) => {
 
   return (
     <Container>
-      {/* If rate not in currencies, give it a 1 */}
-      {rates[base] == null && (
-        <CurrencyAndValue isSelected={true}>
-          <p>{base}</p>
-          <span>1</span>
-        </CurrencyAndValue>
-      )}
       {Object.keys(rates).map((currency) => {
         return (
           <CurrencyAndValue isSelected={currency === base}>
