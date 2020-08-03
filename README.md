@@ -4,6 +4,16 @@ This is my submission for the SamKnows coding challenge. Thank you very much for
 
 ## Converter
 
+To run:
+
+```
+cd converter
+npm i
+npm run start
+```
+
+The README in the folder is the boilerplate one from create-react-app.
+
 This task was quite fun, I went a little overboard with it and allowed the rates grid to be clickable to set a new target currency. I didn't take too long to test it manually, I wonder if you will find any quirks in the software.
 
 Regarding CSS, I chose to use styled components, as they are very fast to bootstrap projects with. I find them a bit clunky sometimes, as opposed to using classnames which can be changed without changing the semantic meaning of tags. However, I think for this project they saved me time and still accomplished what I needed.
@@ -19,11 +29,12 @@ Regarding CSS, I chose to use styled components, as they are very fast to bootst
 
 ## Flatten
 
-In order to not spend too much time dealing with webpack/babel boilerplate, I decided to just write to work with node.js. The version I am using is `v14.3.0`.
+In order to not spend too much time dealing with webpack/babel, I decided to just write to work with node.js. The version I am using is `v14.3.0`.
 
 This was developed with TDD principles. You can run tests with:
 
 ```
+cd flatten
 npm i
 npm run test
 ```
