@@ -17,7 +17,7 @@ const SwitchButton = styled.button`
   padding: 10px 20px;
   box-shadow: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   color: white;
   font-weight: 600;
 

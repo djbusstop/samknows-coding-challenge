@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
-  width: 100%;
   padding: 30px;
   background-color: #f5f5f5;
 
