@@ -56,7 +56,7 @@ function App() {
             getRates
           }}
         />
-        <Rates {...{ loadingState, target, rates }} />
+        <Rates {...{ loadingState, target, setTarget, rates }} />
       </Container>
     </AppContainer>
   );

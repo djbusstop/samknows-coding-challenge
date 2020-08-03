@@ -66,9 +66,6 @@ export default ({
   rates,
   getRates
 }) => {
-  const [baseCurrency, setBaseCurrency] = useState();
-  // const [targetCurrency, setTargetCurrency] = useState();
-
   const [inputValue, setInputValue] = useState(0);
   const [convertedValue, setConvertedValue] = useState(0);
 
@@ -86,7 +83,7 @@ export default ({
     getRates(base);
   }, [base]);
 
-  // Convert
+  // Convert when values change
   useEffect(() => {
     if (loadingState === "success") {
       setConvertedValue(inputValue * rates[target]);
@@ -107,9 +104,9 @@ export default ({
         }}
         value={base}
       >
-        {currencies.map((currency) => {
+        {currencies.map((currency, index) => {
           return (
-            <option key={currency} value={currency}>
+            <option key={index - 100} value={currency}>
               {currency}
             </option>
           );
@@ -136,9 +133,9 @@ export default ({
         }}
         value={target}
       >
-        {currencies.map((currency) => {
+        {currencies.map((currency, index) => {
           return (
-            <option key={currency} value={currency}>
+            <option key={index + 100} value={currency}>
               {currency}
             </option>
           );

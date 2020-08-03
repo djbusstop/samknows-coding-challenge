@@ -16,6 +16,15 @@ const CurrencyAndValue = styled.div`
   flex-direction: column;
   align-items: center;
 
+  &:hover {
+    cursor: pointer;
+    p {
+      color: ${({ isSelected }) => {
+        return isSelected ? "#ef2e5a" : "grey";
+      }};
+    }
+  }
+
   p {
     font-size: 18px;
     margin: 0;
@@ -30,7 +39,7 @@ const CurrencyAndValue = styled.div`
   }
 `;
 
-export default ({ loadingState, target, rates }) => {
+export default ({ loadingState, target, setTarget, rates }) => {
   // If loading, don't display
   if (loadingState === "loading") return null;
 
@@ -38,7 +47,13 @@ export default ({ loadingState, target, rates }) => {
     <Container>
       {Object.keys(rates).map((currency) => {
         return (
-          <CurrencyAndValue isSelected={currency === target}>
+          <CurrencyAndValue
+            key={currency}
+            isSelected={currency === target}
+            onClick={() => {
+              setTarget(currency);
+            }}
+          >
             <p>{currency}</p>
             <span>{rates[currency].toString().slice(0, 5)}</span>
           </CurrencyAndValue>
