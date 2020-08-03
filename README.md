@@ -7,6 +7,8 @@ This is my submission for the SamKnows coding challenge. First off, I'm sorry, I
 ### Nice to Haves
 
 - I would use a locale based formatter for displaying the value properly, for example for currencies that don't use cents such as Yen. I would use a library for this.
+- I was lazy with how I passed the values from my getRates hook in to the components, normally I would use a context if I was sharing data like this, because eventually the component tree would get grow and I would benefit from sharing that state in a better way.
+- I would handle the non-number input validation and error's that could arise from that better.
 
 ## Flatten
 

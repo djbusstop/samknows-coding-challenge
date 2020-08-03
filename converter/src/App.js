@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import Converter from "./components/Converter";
 // import Rates from "./components/Rates";
+
+import useGetRates from "./hooks/getRates";
+
+const AppContainer = styled.main`
+  padding: 0 30px;
+`;
 
 const Title = styled.h1`
   text-align: center;
@@ -17,13 +23,20 @@ const Container = styled.div`
 `;
 
 function App() {
+  const [loadingState, base, currencies, rates, getRates] = useGetRates();
+
+  // Get rates for Euro on page load
+  useEffect(() => {
+    getRates();
+  }, []);
+
   return (
-    <main>
+    <AppContainer>
       <Title>Currency Converter</Title>
       <Container>
-        <Converter />
+        <Converter {...{ loadingState, base, currencies, rates, getRates }} />
       </Container>
-    </main>
+    </AppContainer>
   );
 }
 

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import useGetRates from "../hooks/getRates";
 
 const Container = styled.section`
-  width: auto;
+  width: 300px;
   padding: 30px;
   background-color: lightgray;
 
@@ -58,8 +58,8 @@ const formatCurency = (value) => {
   return `${parts[0]}.${fraction}`;
 };
 
-export default () => {
-  const [loadingState, base, currencies, rates, getRates] = useGetRates();
+export default ({ loadingState, base, currencies, rates, getRates }) => {
+  // const [loadingState, base, currencies, rates, getRates] = useGetRates();
 
   const [baseCurrency, setBaseCurrency] = useState();
   const [targetCurrency, setTargetCurrency] = useState();
@@ -67,18 +67,15 @@ export default () => {
   const [inputValue, setInputValue] = useState(0);
   const [convertedValue, setConvertedValue] = useState(0);
 
-  // Get rates for Euro on page load
-  useEffect(() => {
-    getRates();
-  }, []);
-
   useEffect(() => {
     if (loadingState === "success") {
       // Once base is loaded
       if (base && currencies) {
         // Set currencies in dropdown
         setBaseCurrency(base);
-        setTargetCurrency(currencies[0]);
+        if (!targetCurrency) {
+          setTargetCurrency(currencies[0]);
+        }
       }
     }
   }, [loadingState, base]);
