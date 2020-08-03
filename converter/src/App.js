@@ -2,24 +2,25 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import Converter from "./components/Converter";
-// import Rates from "./components/Rates";
+import Rates from "./components/Rates";
 
 import useGetRates from "./hooks/getRates";
 
 const AppContainer = styled.main`
-  padding: 0 30px;
+  max-width: 960px;
+  margin: 0 auto 2em auto;
 `;
 
 const Title = styled.h1`
   text-align: center;
-  margin: 3em 0;
+  margin: 2em 0;
 `;
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto;
-  grid-row-gap: 1em;
+  grid-column-gap: 3em;
 `;
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <Title>Currency Converter</Title>
       <Container>
         <Converter {...{ loadingState, base, currencies, rates, getRates }} />
+        <Rates {...{ loadingState, currencies, base, rates }} />
       </Container>
     </AppContainer>
   );

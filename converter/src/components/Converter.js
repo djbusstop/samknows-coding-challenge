@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import useGetRates from "../hooks/getRates";
-
 const Container = styled.section`
   width: 300px;
   padding: 30px;
-  background-color: lightgray;
+  background-color: #f5f5f5;
 
   display: flex;
   flex-direction: column;
@@ -59,8 +57,6 @@ const formatCurency = (value) => {
 };
 
 export default ({ loadingState, base, currencies, rates, getRates }) => {
-  // const [loadingState, base, currencies, rates, getRates] = useGetRates();
-
   const [baseCurrency, setBaseCurrency] = useState();
   const [targetCurrency, setTargetCurrency] = useState();
 
