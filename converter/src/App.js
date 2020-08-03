@@ -24,7 +24,15 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [loadingState, base, currencies, rates, getRates] = useGetRates();
+  const [
+    loadingState,
+    base,
+    target,
+    setTarget,
+    currencies,
+    rates,
+    getRates
+  ] = useGetRates();
 
   // Get rates for Euro on page load
   useEffect(() => {
@@ -35,8 +43,10 @@ function App() {
     <AppContainer>
       <Title>Currency Converter</Title>
       <Container>
-        <Converter {...{ loadingState, base, currencies, rates, getRates }} />
-        <Rates {...{ loadingState, currencies, base, rates }} />
+        <Converter
+          {...{ loadingState, base, setTarget, currencies, rates, getRates }}
+        />
+        <Rates {...{ loadingState, currencies, base, target, rates }} />
       </Container>
     </AppContainer>
   );

@@ -4,6 +4,7 @@ export default () => {
   const [loadingState, setLoadingState] = useState("loading");
   const [rates, setRates] = useState(undefined);
   const [base, setBase] = useState(undefined);
+  const [target, setTarget] = useState();
   const [currencies, setCurrencies] = useState(undefined);
 
   const getRates = async (currency) => {
@@ -46,5 +47,5 @@ export default () => {
     }
   };
 
-  return [loadingState, base, currencies, rates, getRates];
+  return [loadingState, base, target, setTarget, currencies, rates, getRates];
 };

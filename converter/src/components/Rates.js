@@ -30,7 +30,7 @@ const CurrencyAndValue = styled.div`
   }
 `;
 
-export default ({ loadingState, base, currencies, rates }) => {
+export default ({ loadingState, target, rates }) => {
   // If loading, don't display
   if (loadingState === "loading") return null;
 
@@ -38,7 +38,7 @@ export default ({ loadingState, base, currencies, rates }) => {
     <Container>
       {Object.keys(rates).map((currency) => {
         return (
-          <CurrencyAndValue isSelected={currency === base}>
+          <CurrencyAndValue isSelected={currency === target}>
             <p>{currency}</p>
             <span>{rates[currency].toString().slice(0, 5)}</span>
           </CurrencyAndValue>

@@ -56,7 +56,14 @@ const formatCurency = (value) => {
   return `${parts[0]}.${fraction}`;
 };
 
-export default ({ loadingState, base, currencies, rates, getRates }) => {
+export default ({
+  loadingState,
+  base,
+  currencies,
+  setTarget,
+  rates,
+  getRates
+}) => {
   const [baseCurrency, setBaseCurrency] = useState();
   const [targetCurrency, setTargetCurrency] = useState();
 
@@ -80,6 +87,10 @@ export default ({ loadingState, base, currencies, rates, getRates }) => {
   useEffect(() => {
     getRates(baseCurrency);
   }, [baseCurrency]);
+
+  useEffect(() => {
+    setTarget(targetCurrency);
+  }, [targetCurrency]);
 
   // Convert
   useEffect(() => {

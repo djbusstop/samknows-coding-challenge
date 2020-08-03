@@ -10,6 +10,7 @@ This is my submission for the SamKnows coding challenge. First off, I'm sorry, I
 - I was lazy with how I passed the values from my getRates hook in to the components, normally I would use a context if I was sharing data like this, because eventually the component tree would get grow and I would benefit from sharing that state in a better way.
 - I would handle the non-number input validation and error's that could arise from that better.
 - The values on the converter box would fix to the bottom of the box, in case the rates box was taller,
+- I hacked a solution to the fact that the Euro value wasn't included in the default rates, by adding it in case it didn't exist. I would look more in to the API to see if there's a data side fix.
 
 ## Flatten
 
