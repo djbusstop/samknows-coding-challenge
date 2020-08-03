@@ -27,6 +27,7 @@ function App() {
   const [
     loadingState,
     base,
+    setBase,
     target,
     setTarget,
     currencies,
@@ -44,9 +45,18 @@ function App() {
       <Title>Currency Converter</Title>
       <Container>
         <Converter
-          {...{ loadingState, base, setTarget, currencies, rates, getRates }}
+          {...{
+            loadingState,
+            base,
+            setBase,
+            target,
+            setTarget,
+            currencies,
+            rates,
+            getRates
+          }}
         />
-        <Rates {...{ loadingState, currencies, base, target, rates }} />
+        <Rates {...{ loadingState, target, rates }} />
       </Container>
     </AppContainer>
   );

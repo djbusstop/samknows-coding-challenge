@@ -59,45 +59,39 @@ const formatCurency = (value) => {
 export default ({
   loadingState,
   base,
+  setBase,
   currencies,
+  target,
   setTarget,
   rates,
   getRates
 }) => {
   const [baseCurrency, setBaseCurrency] = useState();
-  const [targetCurrency, setTargetCurrency] = useState();
+  // const [targetCurrency, setTargetCurrency] = useState();
 
   const [inputValue, setInputValue] = useState(0);
   const [convertedValue, setConvertedValue] = useState(0);
 
+  // When done loading, set the target from the results
   useEffect(() => {
     if (loadingState === "success") {
-      // Once base is loaded
-      if (base && currencies) {
-        // Set currencies in dropdown
-        setBaseCurrency(base);
-        if (!targetCurrency) {
-          setTargetCurrency(currencies[0]);
-        }
+      if (!target) {
+        setTarget(currencies[0]);
       }
     }
-  }, [loadingState, base]);
+  }, [loadingState]);
 
   // If base currency changes, then refetch rates
   useEffect(() => {
-    getRates(baseCurrency);
-  }, [baseCurrency]);
-
-  useEffect(() => {
-    setTarget(targetCurrency);
-  }, [targetCurrency]);
+    getRates(base);
+  }, [base]);
 
   // Convert
   useEffect(() => {
     if (loadingState === "success") {
-      setConvertedValue(inputValue * rates[targetCurrency]);
+      setConvertedValue(inputValue * rates[target]);
     }
-  }, [baseCurrency, targetCurrency, inputValue, rates]);
+  }, [base, target, inputValue, rates]);
 
   // If loading, don't display
   if (loadingState === "loading") return null;
@@ -109,9 +103,9 @@ export default ({
         name="base"
         id="base-currency"
         onChange={(e) => {
-          setBaseCurrency(e.target.value);
+          setBase(e.target.value);
         }}
-        value={baseCurrency}
+        value={base}
       >
         {currencies.map((currency) => {
           return (
@@ -124,10 +118,10 @@ export default ({
 
       <SwitchButton
         onClick={() => {
-          const newTarget = baseCurrency;
-          const newBase = targetCurrency;
-          setBaseCurrency(newBase);
-          setTargetCurrency(newTarget);
+          const newTarget = base;
+          const newBase = target;
+          setBase(newBase);
+          setTarget(newTarget);
         }}
       >
         Switch
@@ -138,9 +132,9 @@ export default ({
         name="targe"
         id="target-currency"
         onChange={(e) => {
-          setTargetCurrency(e.target.value);
+          setTarget(e.target.value);
         }}
-        value={targetCurrency}
+        value={target}
       >
         {currencies.map((currency) => {
           return (
@@ -163,10 +157,10 @@ export default ({
       </AmountInputContainer>
 
       <BaseValue>
-        {inputValue} {baseCurrency} =
+        {inputValue} {base} =
       </BaseValue>
       <TargetValue>
-        {formatCurency(convertedValue)} {targetCurrency}
+        {formatCurency(convertedValue)} {target}
       </TargetValue>
     </Container>
   );

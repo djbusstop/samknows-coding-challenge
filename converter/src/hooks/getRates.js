@@ -47,5 +47,14 @@ export default () => {
     }
   };
 
-  return [loadingState, base, target, setTarget, currencies, rates, getRates];
+  return [
+    loadingState,
+    base,
+    setBase,
+    target,
+    setTarget,
+    currencies,
+    rates,
+    getRates
+  ];
 };
