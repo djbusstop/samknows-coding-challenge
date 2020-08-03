@@ -15,8 +15,30 @@ export default () => {
         }`
       );
       const body = await response.json();
+
+      // If rates doesn't include Euro
+      const ratesValues = !Object.keys(body.rates).includes("EUR")
+        ? // Add euro to list
+          {
+            ...body.rates,
+            EUR: 1
+          }
+        : // Use default rates
+          body.rates;
+
+      // Sort rates alphabetically
+      const sortedRates = Object.keys(ratesValues)
+        .sort((a, b) => (a < b ? 1 : 0))
+        .reduce(
+          (acc, rateKey) => ({
+            [rateKey]: ratesValues[rateKey],
+            ...acc
+          }),
+          {}
+        );
+
       await setBase(body.base);
-      await setRates(body.rates);
+      await setRates(sortedRates);
       await setCurrencies(Object.keys(body.rates));
       await setLoadingState("success");
     } catch (e) {

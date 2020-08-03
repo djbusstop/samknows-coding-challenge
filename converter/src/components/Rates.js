@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -8,6 +8,7 @@ const Container = styled.section`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
+  grid-gap: 20px;
 `;
 
 const CurrencyAndValue = styled.div`
